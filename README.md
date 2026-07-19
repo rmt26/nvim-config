@@ -67,11 +67,3 @@ UNTUK PENGGUNA SELAIN TERMUX (Linux desktop, macOS, WSL):
 mungkin perlu mengedit init.lua jika path/nama binary atau versi berbeda
 di environment kamu, misalnya pakai lua_ls via Mason atau ts_ls versi
 terbaru. Sesuaikan bagian `vim.lsp.config(...)` sesuai environment masing-masing.
-
-================================================================
-CARA PAKAI FILE INI:
-1. Buka file ini: ~/.config/nvim/README.txt
-2. Copy isi bagian di atas (dari baris "# Neovim Config..." sampai akhir)
-3. Paste ke ~/.config/nvim/README.md (timpa yang lama)
-4. Simpan.
-================================================================
