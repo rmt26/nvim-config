@@ -35,6 +35,32 @@ Konfigurasi Neovim ringan tapi feature-complete untuk Termux di Android
 
 ## Install
 
+### 1. Dependencies (Termux) — WAJIB di-install dulu
+
+```bash
+pkg update
+pkg install -y neovim git nodejs npm ripgrep clang lua-language-server python python-pip
+npm install -g typescript@5.6.3
+```
+
+Penjelasan:
+- `neovim`            → editor utama
+- `git`               → lazy.nvim clone plugin dari GitHub
+- `nodejs` + `npm`    → butuh ts_ls (JS/TS LSP) & beberapa LSP Mason berbasis node
+- `ripgrep`           → Telescope live_grep (`:leader fg`) butuh ini
+- `clang`             → compiler C untuk build parser Treesitter (wajib)
+- `lua-language-server` → binary system untuk lua_ls (sesuai config)
+- `python` + `python-pip` → Mason install pyright (LSP Python) lewat pip internal
+- `npm -g typescript@5.6.3` → ts_ls diarahkan ke versi ini (7.x broken di android-arm64)
+
+Yang di-handle otomatis (TIDAK perlu install manual):
+- lazy.nvim → clone otomatis saat nvim pertama kali buka
+- Semua plugin → install otomatis lewat `:Lazy sync`
+- Parser Treesitter → auto-install saat VimEnter (butuh clang di atas)
+- LSP (pyright, html, cssls) → di-install Mason otomatis saat `:Lazy sync`
+
+### 2. Clone & sync
+
 ```bash
 # Backup config lama kalau ada
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
@@ -48,6 +74,9 @@ git clone https://github.com/rmt26/nvim-config.git ~/.config/nvim
 
 Setelah `:Lazy sync` selesai, restart nvim. Tema tokyonight-night dan
 Treesitter parser akan aktif otomatis.
+
+Catatan pip: user TIDAK perlu jalanin pip manual. Mason memanggil pip sendiri
+saat install pyright (pastikan `python` + `python-pip` sudah terpasang di Termux).
 
 ## Catatan Termux
 
