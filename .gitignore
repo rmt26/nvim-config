@@ -1,0 +1,11 @@
+# OS & editor temp files
+.DS_Store
+*.swp
+*~
+*.bak
+*.tmp
+
+# Jangan pernah commit credential / secret
+.netrc
+.git-credentials
+*.local.lua
