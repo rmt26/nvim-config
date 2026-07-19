@@ -1,3 +1,7 @@
+================================================================
+README.md - SALINAN (copy-paste ke ~/.config/nvim/README.md)
+================================================================
+
 # Neovim Config (Termux / Android)
 
 Konfigurasi Neovim ringan tapi feature-complete untuk Termux di Android
@@ -40,7 +44,7 @@ Konfigurasi Neovim ringan tapi feature-complete untuk Termux di Android
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
 
 # Clone repo ini
-git clone https://github.com/USERNAME/nvim-config.git ~/.config/nvim
+git clone https://github.com/rmt26/nvim-config.git ~/.config/nvim
 
 # Buka nvim, lalu install plugin:
 :Lazy sync
@@ -51,8 +55,27 @@ Treesitter parser akan aktif otomatis.
 
 ## Catatan Termux
 
-- `lua-language-server` pakai binary system (`pkg install lua-language-server`),
-  bukan build Mason (gagal di Termux).
-- `ts_ls` diarahkan ke typescript global 5.6.3 (`npm install -g typescript@5.6.3`)
-  karena ts 7.x broken di android-arm64.
-- Edit `init.lua` jika path/nama berbeda di环境 kamu.
+UNTUK PENGGUNA TERMUX (Android): tidak perlu mengubah init.lua sama sekali.
+Cukup install dependency di bawah ini, lalu clone & :Lazy sync.
+
+  pkg install lua-language-server
+  npm install -g typescript@5.6.3
+
+Penjelasan bagian khusus Termux di dalam init.lua:
+- `lua_ls` memakai binary system `lua-language-server` (bukan build Mason
+  yang gagal di Termux).
+- `ts_ls` diarahkan ke typescript global 5.6.3 karena ts 7.x broken di
+  android-arm64.
+
+UNTUK PENGGUNA SELAIN TERMUX (Linux desktop, macOS, WSL):
+mungkin perlu mengedit init.lua jika path/nama binary atau versi berbeda
+di environment kamu, misalnya pakai lua_ls via Mason atau ts_ls versi
+terbaru. Sesuaikan bagian `vim.lsp.config(...)` sesuai environment masing-masing.
+
+================================================================
+CARA PAKAI FILE INI:
+1. Buka file ini: ~/.config/nvim/README.txt
+2. Copy isi bagian di atas (dari baris "# Neovim Config..." sampai akhir)
+3. Paste ke ~/.config/nvim/README.md (timpa yang lama)
+4. Simpan.
+================================================================
