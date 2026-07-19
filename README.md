@@ -1,7 +1,3 @@
-================================================================
-README.md - SALINAN (copy-paste ke ~/.config/nvim/README.md)
-================================================================
-
 # Neovim Config (Termux / Android)
 
 Konfigurasi Neovim ringan tapi feature-complete untuk Termux di Android
